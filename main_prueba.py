@@ -67,7 +67,7 @@ def ver_estadisticas():
 
 
 #---JUEGO DE 21 BLACKJACK (FINAL BOSS)---
-def TurnoCartas():
+def TurnoCartas(user):
     # Se asignando las cartas que se usaran en el juego
     cartas = ["A",2,3,4,5,6,7,8,9,10,"J","Q","K"]
 
@@ -91,11 +91,11 @@ def TurnoCartas():
         if numero == "A":
             mesa.append(numero)
             print('Que valor quieres que tenga tu "A", 1 u 11?')
-            numero = input('Escoja un valor: ')
+            numero = int(input('Escoja un valor: '))
             if numero != 1 and numero != 11:
                 print ('PERDISTE POR TRAMPOSO!')
                 vida = user.vidas
-                vida -= 0.25
+                vida -= 0.50
                 user.vidas = vida
                 print(user.vidas)
                 return 0
@@ -179,10 +179,10 @@ def TurnoCartas():
             return total
         else:
             print ("QUE MALA SUERTE! HAS PERDIDO! ")
-            vida = user.vidas
-            vida -= 0.25
-            user.vidas = vida
-            print(user.vidas)
+            # vida = user.vidas
+            # vida -= 0.25
+            # user.vidas = vida
+            # print(user.vidas)
             return 0
 
     # Se actualizan los datos en el archivo txt de las estadiasticas
@@ -207,7 +207,7 @@ def TurnoCartas():
     with open('DatosEstadisticas.txt', 'w') as dataes:
         dataes.writelines(datos)
 
-def jugar_blackjack():
+def jugar_blackjack(user):
     intentos = 0
     
     # Validar que el jugador aún tenga vidas disponibles
@@ -220,7 +220,7 @@ def jugar_blackjack():
                 time.sleep(2)
                 print ('Inicia el Jugador numero 1')
                 time.sleep(1)
-                Jugador1 = TurnoCartas()
+                Jugador1 = TurnoCartas(user)
                 print (f'Total del Jugador = {Jugador1}')
                 print('\n')
                 time.sleep(2)
@@ -233,6 +233,10 @@ def jugar_blackjack():
                     intentos += 1
             else:
                 print('Ya no tienes más intentos')
+                vida = user.vidas
+                vida -= 0.50
+                user.vidas = vida
+                print(user.vidas)
                 break
     else:
         print('Se te acabaron las vidas ¡GAME OVER!')
@@ -290,7 +294,7 @@ def jugar_numero(user):
                 elif int(numero_aleatorio) == int(numeros):
                     print('¡Ganaste! Ese era el número')
                     inventario = user.inventario
-                    inventario.append('título Universitario')
+                    inventario.append('Título Universitario')
                     user.inventario = inventario
                     print(user.inventario)
                     break
@@ -844,7 +848,7 @@ def jugar_sopa(user, matriz_1, matriz_2, matriz_3):
                 else: 
                     print('¡FELICIDADES! Haz conseguido todas las palabras')
                     vida = user.vidas
-                    vida -= 1
+                    vida += 1
                     user.vidas = vida
                     print(user.vidas)
                     break
@@ -915,6 +919,7 @@ def jugar_booleano(user, preguntas_booleanas):
                     inventario.append('libro de Física')
                     user.inventario = inventario
                     print(user.inventario)
+                    break
                 else:
                     print('La respuesta es incorrecta')
                     vida = user.vidas
@@ -1302,7 +1307,7 @@ def jugar_logica(user, preguntas_logica):
     if user.vidas > 0:
         while True:
             respuesta = int(input('Ingrese su respuesta: '))
-            while not respuesta.isnumeric():
+            while respuesta < 0 and respuesta > 15:
                 respuesta = int(input('Ingrese su respuesta: '))
             # Asociando las preguntas con sus respectivas respuestas
             if pregunta_aleatoria == preguntas_logica[0]:
@@ -1381,7 +1386,7 @@ def jugar_criptograma(user, preguntas_criptograma):
             respuesta = input('Ingrese su respuesta: ')
             # Asociando las preguntas con sus respectivas respuestas
             if pregunta_aleatoria == preguntas_criptograma[0]:
-                respuesta_1 = 'Si te graduas pisas el samán'
+                respuesta_1 = 'si te graduas pisas el saman'
                 if respuesta_1 == respuesta:
                     print('La respuesta es correcta')
                     inventario = user.inventario
@@ -1398,7 +1403,7 @@ def jugar_criptograma(user, preguntas_criptograma):
                     break
 
             elif pregunta_aleatoria == preguntas_criptograma[1]:
-                respuesta_2 = 'Si te graduas pisas el samán'
+                respuesta_2 = 'si te graduas pisas el saman'
                 if respuesta_2 == respuesta:
                     print('La respuesta es correcta')
                     inventario = user.inventario
@@ -1415,7 +1420,7 @@ def jugar_criptograma(user, preguntas_criptograma):
                     break
 
             else:
-                respuesta_3 = 'Si te graduas pisas el samán'
+                respuesta_3 = 'si te graduas pisas el saman'
                 if respuesta_3 == respuesta:
                     print('La respuesta es correcta')
                     inventario = user.inventario
@@ -1526,7 +1531,7 @@ def jugar_matematica(user, preguntas_matematica):
                     break
 
             elif pregunta_aleatoria == preguntas_matematica[1]:
-                respuesta_2 = diff((sen(3.1415)) / 2)
+                respuesta_2 = diff((sin(3.1415)) / 2)
                 if respuesta_2 == int(respuesta):
                     print('La respuesta es correcta')
                     inventario = user.inventario
@@ -1543,7 +1548,7 @@ def jugar_matematica(user, preguntas_matematica):
                     print(user.vidas)
                     break
             else:
-                respuesta_3 = diff((sen(3.1415))/5 - (tan(3.1415)))
+                respuesta_3 = diff((sin(3.1415))/5 - (tan(3.1415)))
                 if respuesta_3 == int(respuesta):
                     print('La respuesta es correcta')
                     inventario = user.inventario
@@ -1733,7 +1738,7 @@ def jugar(user, palabras_ahorcado, imagenes):
 
         
 # ---CUARTO 1 (LA BIBLIOTECA)---
-def cuarto_1(user,  palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño):
+def cuarto_1(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño):
     while True:
         # Validar que el jugador aún tenga vidas disponibles
         if user.vidas > 0:
@@ -1899,7 +1904,7 @@ def cuarto_2(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
 
             if decision == 1:
                 # Encuentra la lógica y resuelve
-                if 'Titulo Universitario' in user.inventario and 'Mensaje: Si estas gradudado puedes pisar el Samán' in user.inventario:
+                if 'Título Universitario' in user.inventario and 'Mensaje: Si estas gradudado puedes pisar el Samán' in user.inventario:
                     print('¡Que empiece el juego!')
                     print('\n')
                     time.sleep(0.5)
@@ -1932,7 +1937,7 @@ def cuarto_2(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                 time.sleep(0.5)
                 print('Veamos que tan buena es tu memorización. Aquí tendrás que escribir las coordenadas X e Y de los pares de emojis.')
                 print('\n')
-                time.sleep('0.5')
+                time.sleep(0.5)
                 jugar_memoria(user)
             
             else: 
@@ -1944,6 +1949,12 @@ def cuarto_2(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
             if continuar == 'N':
                 cuarto_1(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
                 # break
+        
+
+        else:
+            print('Se te acabaron las vidas ¡GAME OVER!')
+            sys.exit()
+
         nu = user.username
         with open('DatosEstadisticas.txt') as dataes:
             datos = dataes.readlines()
@@ -1960,10 +1971,6 @@ def cuarto_2(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
 
         with open('DatosEstadisticas.txt', 'w') as dataes:
             dataes.writelines(datos)
-
-        else:
-            print('Se te acabaron las vidas ¡GAME OVER!')
-            sys.exit()
 
 #---CUARTO 3 (PASILLO DE LOS LABORATORIOS)---
 def cuarto_3(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño):
@@ -2033,7 +2040,7 @@ def cuarto_3(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                 if cuartos == 1:
                     cuarto_1(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
                 else:
-                    cuarto_4(user, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
+                    cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
 
             print('\n')
             continuar = input('¿Desea continuar en la habitación? [S/N]: ').upper()
@@ -2049,14 +2056,14 @@ def cuarto_3(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                 if cuartos == 1:
                     cuarto_1(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
                 else:
-                    cuarto_4(user, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
+                    cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
 
         else:
             print('Se te acabaron las vidas ¡GAME OVER!')
             sys.exit()
 
 #---CUARTO 4 (LABORATORIOS)---
-def cuarto_4(user, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño):
+def cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño):
     while True:
         # Validar que el jugador aún tenga vidas disponibles
         if user.vidas > 0:
@@ -2143,9 +2150,9 @@ def cuarto_4(user, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, 
                 while cuartos != 1 and cuartos != 2:
                     cuartos = int(input('Escoja una habitación: '))
                 if cuartos == 1:
-                    cuarto_3(user, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
+                    cuarto_3(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
                 else:
-                    cuarto_5(user, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
+                    cuarto_5(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
             print('\n')
             continuar = input('¿Desea continuar en la habitación? [S/N]: ').upper()
             if continuar == 'N':
@@ -2158,16 +2165,16 @@ def cuarto_4(user, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, 
                 while cuartos != 1 and cuartos != 2:
                     cuartos = int(input('Escoja una habitación: '))
                 if cuartos == 1:
-                    cuarto_3(user, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
+                    cuarto_3(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
                 else:
-                    cuarto_5(user, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
+                    cuarto_5(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
         
         else:
             print('Se te acabaron las vidas ¡GAME OVER!')
             sys.exit()
 
 #---CUARTO 5 (SALA DE SERVIDORES)---
-def cuarto_5(user, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño):
+def cuarto_5(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño):
     while True:
         # Validar que el jugador aún tenga vidas disponibles
         if user.vidas > 0:
@@ -2221,17 +2228,21 @@ def cuarto_5(user, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, 
                     print('Veamos si la suerte está de tu lado. Debes conseguir 21 BlackJack o ganarle a tu oponente.')
                     print('\n')
                     time.sleep(0.5)
-                    jugar_blackjack()
+                    jugar_blackjack(user)
                 else:
                     print('Necesitas tener un carnet de trabajador para poder pasar')
             elif decision == 2:
                 # Palabra mezclada
-                print('¡Que empiece el juego!')
-                print('\n')
-                time.sleep(0.5)
-                print('Las siguentes palabras se encuentran mezcladas. Deberas ordenarlas una por una.')
-                print('\n')
-                jugar_mezcladas(user, palabras_cocina, palabras_baile, palabras_baño)
+                if 'Disco Duro' in user.inventario:
+                    print('¡Que empiece el juego!')
+                    print('\n')
+                    time.sleep(0.5)
+                    print('Las siguentes palabras se encuentran mezcladas. Deberas ordenarlas una por una.')
+                    print('\n')
+                    jugar_mezcladas(user, palabras_cocina, palabras_baile, palabras_baño)
+                else:
+                    print('Te falta la pieza clave')
+
             elif decision == 3:
                 # escoge un número entre
                 print('¡Que empiece el juego!')
@@ -2242,7 +2253,7 @@ def cuarto_5(user, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, 
                 jugar_numero(user)
             else:
                 print('\n')
-                cuarto_4(user, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
+                cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
                 
             
             print('\n')
@@ -2253,11 +2264,11 @@ def cuarto_5(user, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, 
                 print('\n')
                 cuartos = input('Tome una decisión [S/N]: ').upper()
                 while cuartos != 'S' and cuartos != 'N':
-                    cuartos = input('Tome una decisión: ')
+                    cuartos = input('Tome una decisión [S/N]: ').upper()
                 if cuartos == 'N':
-                    break
+                    sys.exit()
                 else:
-                    cuarto_4(user, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
+                    cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
 
         else:
             print('Se te acabaron las vidas ¡GAME OVER!')
@@ -2421,7 +2432,7 @@ def registar_nuevo_jugador(username,contraseña):
     user_1 = Estadistica(user.username, user.contraseña, user.edad, user.avatar, user.inventario, user.dificultad, user.vidas, user.pistas, user.tiempo, tiempo_final, status)
     
     with open('DatosEstadisticas.txt', 'a+') as dataes:
-        dataes.write(f'Nombre de usuario: {user.username} - Edad: {user.edad} - Avatar: {user.avatar} - Inventario: {user.inventario} - Nivel de Dificultad: {user.dificultad} - Vidas Restantes: {user.vidas} - Pistas Restantes: {user.pistas} - Tiempo Final: {tiempo_final} - Status: {status}\n')
+        dataes.write(f'Nombre de usuario: {user.username} - Edad: {user.edad} - Avatar: {user.avatar} - Inventario: {user.inventario} - Nivel de Dificultad: {user.dificultad} - Vidas Restantes: {user.vidas} - Pistas Restantes: {user.pistas} - Tiempo Final: {tiempo_final} segundos - Status: {status}\n')
 
 
     print('\nUsusario registrado con éxito')
@@ -2549,7 +2560,7 @@ def main():
            13 ['K','K','H','C','R','O','H','T','T','I','V','V','Y','D','E'] 
            14 ['B','K','P','G','V','N','L','F','T','F','W','V','N','U','U']
             
-        '''), 'grey')
+        ''', 'blue'))
 
     matriz_2 = (colored('''
                 0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
@@ -2569,7 +2580,7 @@ def main():
            13 ['O','T','Q','E','Y','E','T','U','B','M','L','D','N','Z','C'] 
            14 ['J','I','Y','S','Y','K','B','T','H','X','C','M','F','M','P']
             
-        '''), 'grey')
+        ''', 'blue'))
             
     matriz_3 = (colored('''
                 0   1   2   3   4   5   6   7   8   9  10  11  12  13  14
@@ -2589,7 +2600,7 @@ def main():
            13 ['R','X','E','S','K','N','Z','W','D','S','A','J','R','R','B'] 
            14 ['Z','Y','P','L','A','Z','A','G','B','Q','P','T','R','D','W']
             
-        '''),'grey')
+        ''','blue'))
 
     #---PREGUNTAS USADAS EN EL JUEGO PREGUNTAS SOBRE PTYHON---
     preguntas_python = [
@@ -2690,8 +2701,8 @@ def main():
                 cuarto_1(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
                 cuarto_2(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
                 cuarto_3(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
-                cuarto_4(user, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
-                cuarto_5(user, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
+                cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
+                cuarto_5(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
 
                 print('¡Felicidades! Has logrado evitar una catástrofe en la Unimet')
                 sys.exit()
@@ -2779,25 +2790,23 @@ def main():
         else:
             sys.exit()
 
-        
-            
 
 main()
 
 
-   ︵.︵
-  (˛. *˛)
- (˛˛. *。)
- (˛* ˛*˛*)
-    |.|
+#    ︵.︵
+#   (˛. *˛)
+#  (˛˛. *。)
+#  (˛* ˛*˛*)
+#     |.|
 
 
 
-            -------------------------------------PLAZA-----------------------------------
-                   ____________________________︵.︵_______________________________
-                  /                           (˛. *˛)                             \
-                 /  /                        (˛˛. *。)                           \ \
-                /  /|                        (˛* ˛*˛*)                           |\ \
-               /  /                             |.|                                \ \
-              /  /|                                                                |\ \
-             /_________________________________________________________________________\
+#             -------------------------------------PLAZA-----------------------------------
+#                    ____________________________︵.︵_______________________________
+#                   /                           (˛. *˛)                             \
+#                  /  /                        (˛˛. *。)                           \ \
+#                 /  /|                        (˛* ˛*˛*)                           |\ \
+#                /  /                             |.|                                \ \
+#               /  /|                                                                |\ \
+#              /_________________________________________________________________________\
