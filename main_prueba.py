@@ -226,6 +226,8 @@ def jugar_blackjack(user):
                 time.sleep(2)
                 print('\n')
                 continuar = input('Quieres Jugar Otra Vez? [S/N]: ').upper()
+                while continuar != 'S' and continuar != 'N':
+                    continuar = input('Quieres Jugar Otra Vez? [S/N]: ').upper()
                 print('\n')
                 if continuar == 'N':
                     break
@@ -359,7 +361,12 @@ def jugar_mezcladas(user, palabras_cocina, palabras_baile, palabras_baño):
             respuesta_3 = input('Reescriba la tercera palabra: ').lower()
             respuesta_4 = input('Reescriba la cuarta palabra: ').lower()
             respuesta_5 = input('Reescriba la quinta palabra: ').lower()
-
+            while not respuesta_1.isalpha() and not respuesta_2.isalpha() and not respuesta_3.isalpha() and not respuesta_4.isalpha() and not respuesta_5.isalpha():
+                respuesta_1 = input('Reescriba la primera palabra: ').lower()
+                respuesta_2 = input('Reescriba la segunda palabra: ').lower()
+                respuesta_3 = input('Reescriba la tercera palabra: ').lower()
+                respuesta_4 = input('Reescriba la cuarta palabra: ').lower()
+                respuesta_5 = input('Reescriba la quinta palabra: ').lower()
 
             if intentos < 2:
                 if categorias_aleatorias == palabras_cocina:
@@ -528,7 +535,7 @@ def jugar_adivinanzas(user, adivinanzas):
                             print('¡Perdiste!')
                             break
             elif adivinanza_aleatoria == adivinanzas[1]:
-                respuesta_2 = ['un bombillo', 'bombillo', 'el bombillo']
+                respuesta_2 = ['bombillo', 'un bombillo', 'el bombillo']
                 for i in respuesta_2:
                                 
                     if i == respuesta:
@@ -550,7 +557,7 @@ def jugar_adivinanzas(user, adivinanzas):
                             print('¡Perdiste!')
                             break
             else:
-                respuesta_3 = ['un plátano', 'plátano','el plátano']
+                respuesta_3 = ['plátano', 'un plátano', 'el plátano']
                 for i in respuesta_3:
                     
                     if i == respuesta:
