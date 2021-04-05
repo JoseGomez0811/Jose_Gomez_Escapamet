@@ -986,10 +986,18 @@ def jugar_memoria(user):
             print('Escoge los emojis que sean iguales')
             print('Si deseas usar una pista para conseguir el segundo emoji, debes introducir las coordenasdas del primer emoji y luego presionar "4" en las coordenadas del segundo emoji')
             x1 = int(input('Ingrese la coordenada en x del primer emoji: '))
+            while x1 < 0 and x1 > 4:
+                x1 = int(input('Ingrese la coordenada en x del primer emoji: '))
             y1 = int(input('Ingrese la coordenada en y del primer emoji: '))
+            while y1 < 0 and y1 > 4:
+                y1 = int(input('Ingrese la coordenada en y del primer emoji: '))
             x2 = int(input('Ingrese la coordenada en x del segundo emoji: '))
+            while x2 < 0 and x2 > 4:
+                x2 = int(input('Ingrese la coordenada en x del segundo emoji: '))
             y2 = int(input('Ingrese la coordenada en y del segundo emoji: '))
-
+            while y2 < 0 and y2 > 4:
+                y2 = int(input('Ingrese la coordenada en y del segundo emoji: '))
+            
             pista = user.pistas
 
             if len(emojis) < 7:
@@ -2652,6 +2660,7 @@ def main():
     #---MENU PRINCIPAL---
     musica()
     while True:
+        
         print(colored('''
         ------------------------------
         1: Crear cuenta
@@ -2670,6 +2679,8 @@ def main():
         while decision_cuenta != 1 and decision_cuenta != 2 and decision_cuenta != 3 and decision_cuenta != 4 and decision_cuenta != 5:
             print('¡ERROR!')
             decision_cuenta = int(input('--> '))
+        
+        
 
         if decision_cuenta == 1:
             user = validar_existencia_username()
@@ -2689,6 +2700,8 @@ def main():
             Necesitamos que nos ayudes a recuperar el disco, para eso tienes {user.tiempo} minutos, 
             antes de que el servidor se caiga y no se pueda hacer más nada. 
             ''')
+
+            sys.exit( cronometro_1(user))
 
             decision_reto = input('¿Aceptas el reto? [S/N]: ').upper()
             while decision_reto != 'S' and decision_reto != 'N':
@@ -2717,7 +2730,7 @@ def main():
                 sys.exit()
             else:
                 print('¿Qué pasó papá, le tienes miedo al éxito?')
-        
+    
         elif decision_cuenta == 2:
             print()
             # ver_usuarios()
@@ -2798,6 +2811,7 @@ def main():
 
         else:
             sys.exit()
+
 
 
 main()
