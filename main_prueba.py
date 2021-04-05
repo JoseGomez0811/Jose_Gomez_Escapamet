@@ -906,9 +906,10 @@ def jugar_booleano(user, preguntas_booleanas):
                 respuesta_1 = 'True'
                 if respuesta_1 == respuesta:
                     print('La respuesta es correcta')
-                    inventario = user.inventario
-                    inventario.append('libro de Física')
-                    user.inventario = inventario
+                    vida = user.vidas
+                    vida += 1
+                    user.vidas = vida
+                    print(user.vidas)
                     print(user.inventario)
                     break
                 else:
@@ -922,9 +923,10 @@ def jugar_booleano(user, preguntas_booleanas):
                 respuesta_2 = 'False'
                 if respuesta_2 == respuesta:
                     print('La respuesta es correcta')
-                    inventario = user.inventario
-                    inventario.append('libro de Física')
-                    user.inventario = inventario
+                    vida = user.vidas
+                    vida += 1
+                    user.vidas = vida
+                    print(user.vidas)
                     print(user.inventario)
                     break
                 else:
@@ -2228,7 +2230,7 @@ def cuarto_5(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
 
             if decision == 1:
                 # 21 Blackjack
-                if 'carnet' in user.inventario:
+                if 'carnet' in user.inventario and 'Disco Duro' in user.inventario:
                     print('¡Que empiece el juego!')
                     print('\n')
                     time.sleep(0.5)
