@@ -1,4 +1,0 @@
-Nombre de usuario: Jose - Edad: 1 - Avatar: Scharifker - Inventario: [] - Nivel de Dificultad: Fácil - Vidas Restantes: 5.0 - Pistas Restantes: 5 - Tiempo Final: 1200 segundos - Status: 
-Nombre de usuario: Jjjj - Edad: 1 - Avatar: Scharifker - Inventario: [] - Nivel de Dificultad: Fácil - Vidas Restantes: 5.0 - Pistas Restantes: 5 - Tiempo Final: 1200 segundos - Status: 
-Nombre de usuario: Gtrf - Edad: 1 - Avatar: Scharifker - Inventario: [] - Nivel de Dificultad: Fácil - Vidas Restantes: 5.0 - Pistas Restantes: 5 - Tiempo Final: 1200 segundos - Status: 
-Nombre de usuario: Sdfgdh - Edad: 1 - Avatar: Scharifker - Inventario: [] - Nivel de Dificultad: Fácil - Vidas Restantes: 5.0 - Pistas Restantes: 5 - Tiempo Final: 1200 segundos - Status: 
