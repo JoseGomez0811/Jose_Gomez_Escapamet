@@ -267,6 +267,7 @@ def jugar_blackjack(user):
 
 #---JUEGO DE ESCOGE UN NÚMERO ENTRE---
 def numero():
+    # El programa escoge un número aleatorio
     aleatorio = random.randint(1,15)
     return aleatorio
 
@@ -275,15 +276,16 @@ def jugar_numero(user):
     print(numero_aleatorio)
     intentos = 0
 
-    contador_pistas = 0
-
+    # Se valida que el usuario aún tenga vidas
     if user.vidas > 0:
         while True:
+            # Se le pide al usuario que introduzca un número
             print('Escoge un número entre 1 y 15')
             numeros = input('Escoge un número: ')
             while not numeros.isnumeric():
                 numeros = input('Escoge un número: ')
-                
+
+            # Se le da una ayuda al jugador en caso de que no haya acertado para que pueda tener mas probabilidades de ganar    
             if intentos < 2:
                 if int(numero_aleatorio) < int(numeros):
                     print('Estas por arriba')
@@ -293,6 +295,7 @@ def jugar_numero(user):
                     print('Estas por abajo')
                     intentos += 1
 
+                # Se valida que el usuario haya acertado el número
                 elif int(numero_aleatorio) == int(numeros):
                     print('¡Ganaste! Ese era el número')
                     inventario = user.inventario
@@ -300,6 +303,7 @@ def jugar_numero(user):
                     user.inventario = inventario
                     print(user.inventario)
                     break
+            # En paso de no acertar ningún intento, se le restará vida al jugador
             else:
                 print(f'¡Perdiste! El número era {numero_aleatorio}')
                 vida = user.vidas
@@ -337,6 +341,7 @@ def jugar_numero(user):
 
 #---JUEGO DE PALABRAS MEZCLADAS---
 def aleatorio(palabras_cocina, palabras_baile, palabras_baño):
+    # Se escoge una lista aleatoria
     categoria_aleatoria = random.choice((palabras_cocina, palabras_baile, palabras_baño))
     return categoria_aleatoria
 
@@ -347,6 +352,7 @@ def jugar_mezcladas(user, palabras_cocina, palabras_baile, palabras_baño):
         inversa = random.sample(palabra, len(palabra))
         print(inversa)
     
+    # Se inicializan algunas variables
     intentos = 0
     respuesta_1 = ''
     respuesta_2 = ''
@@ -354,21 +360,29 @@ def jugar_mezcladas(user, palabras_cocina, palabras_baile, palabras_baño):
     respuesta_4 = ''
     respuesta_5 = ''
 
+    # Se validan que el usuario aín tenga vidas
     if user.vidas > 0:
         while True:
+            # Se le pide al usuario que introduzca las respuestas
             respuesta_1 = input('Reescriba la primera palabra: ').lower()
-            respuesta_2 = input('Reescriba la segunda palabra: ').lower()
-            respuesta_3 = input('Reescriba la tercera palabra: ').lower()
-            respuesta_4 = input('Reescriba la cuarta palabra: ').lower()
-            respuesta_5 = input('Reescriba la quinta palabra: ').lower()
-            while not respuesta_1.isalpha() and not respuesta_2.isalpha() and not respuesta_3.isalpha() and not respuesta_4.isalpha() and not respuesta_5.isalpha():
+            while not respuesta_1.isalpha():
                 respuesta_1 = input('Reescriba la primera palabra: ').lower()
+            respuesta_2 = input('Reescriba la segunda palabra: ').lower()
+            while not respuesta_2.isalpha():
                 respuesta_2 = input('Reescriba la segunda palabra: ').lower()
+            respuesta_3 = input('Reescriba la tercera palabra: ').lower()
+            while not respuesta_3.isalpha():
                 respuesta_3 = input('Reescriba la tercera palabra: ').lower()
+            respuesta_4 = input('Reescriba la cuarta palabra: ').lower()
+            while not respuesta_4.isalpha():
                 respuesta_4 = input('Reescriba la cuarta palabra: ').lower()
+            respuesta_5 = input('Reescriba la quinta palabra: ').lower()
+            while not respuesta_5.isalpha():
                 respuesta_5 = input('Reescriba la quinta palabra: ').lower()
+            
 
             if intentos < 2:
+                # Se asignan las respectivas respuestas dependiendo de la lista seleccionada aleatoriamente
                 if categorias_aleatorias == palabras_cocina:
                     if respuesta_1 == 'sarten' and respuesta_2 == 'paleta' and respuesta_3 == 'olla' and respuesta_4 == 'vaso' and respuesta_5 == 'hornilla':
                         print('¡CORRECTO! Esas son las palabras')
@@ -906,10 +920,9 @@ def jugar_booleano(user, preguntas_booleanas):
                 respuesta_1 = 'True'
                 if respuesta_1 == respuesta:
                     print('La respuesta es correcta')
-                    vida = user.vidas
-                    vida += 1
-                    user.vidas = vida
-                    print(user.vidas)
+                    inventario = user.inventario
+                    inventario.append('Libro de Física')
+                    user.inventario = inventario
                     print(user.inventario)
                     break
                 else:
@@ -923,10 +936,9 @@ def jugar_booleano(user, preguntas_booleanas):
                 respuesta_2 = 'False'
                 if respuesta_2 == respuesta:
                     print('La respuesta es correcta')
-                    vida = user.vidas
-                    vida += 1
-                    user.vidas = vida
-                    print(user.vidas)
+                    inventario = user.inventario
+                    inventario.append('Libro de Física')
+                    user.inventario = inventario
                     print(user.inventario)
                     break
                 else:
@@ -1886,16 +1898,16 @@ def cuarto_2(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
             color = fg('#8d2424') + bg('#ffffff')
             res = attr('reset')
             print(color + '''
-            -------------------------------------PLAZA-----------------------------------
+            ----------------------------------PLAZA-----------------------------------
 
             
-                   ____________________________︵.︵_______________________________
-                  /                           (˛. *˛)                             \
-                 /  /                        (˛˛. *。)                           \ \
-                /  /|                        (˛* ˛*˛*)                           |\ \
-               /  /                             |.|                                \ \
-              /  /|                                                                |\ \
-             /_________________________________________________________________________\
+                  ____________________________︵.︵_______________________________
+                 /                           (˛. *˛)                             \
+                /  /                        (˛˛. *。)                           \ \
+               /  /|                        (˛* ˛*˛*)                           |\ \
+              /  /                             |.|                                \ \
+             /  /|                                                                |\ \
+            /_________________________________________________________________________\
             Estas en la plaza de rectorado de la UNIMET
 
             ''' + res)
@@ -2292,28 +2304,6 @@ def cuarto_5(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
             sys.exit()
  
 
-#---CRONOMETRO DEL JUEGO---
-# def cronometro(user):
-#     tiempo = user.tiempo
-
-#     minutos = 0
-#     segundos = 0
-
-#     while minutos < tiempo:
-#         for n in range(1,61):
-#             time.sleep(1)
-#             n = segundos
-#             segundos += 1
-#             if segundos == 60:
-#                 segundos = 00
-#                 minutos += 1
-#                 time.sleep(1)
-#             # print(f'{minutos}:{segundos}')
-#     sys.exit()
-            
-#     return minutos, segundos
-
-
 #---VISUALIZAR LISTA DE USUARIOS REGISTRADOS---
 def ver_usuarios():
     usuarios = []
@@ -2336,7 +2326,6 @@ def ver_usuarios():
     except FileNotFoundError:
         print("\nTodavía no hay ningún usuario registrado.\n")
         return False
-
 
 #---VALIDAR EXISTEN DE USUARIOS REGISTRADOS---
 def validar_existencia_username():
@@ -2386,7 +2375,6 @@ def validar_existencia_username():
     except FileNotFoundError:
         print("\nTodavía no hay ningún username registrado.\n")
         return registar_nuevo_jugador(username, contraseña)
-
 
 #---REGISTRAR NUEVOS USUARIOS---
 def registar_nuevo_jugador(username,contraseña):  
@@ -2701,7 +2689,6 @@ def main():
             antes de que el servidor se caiga y no se pueda hacer más nada. 
             ''')
 
-            sys.exit( cronometro_1(user))
 
             decision_reto = input('¿Aceptas el reto? [S/N]: ').upper()
             while decision_reto != 'S' and decision_reto != 'N':
@@ -2815,21 +2802,3 @@ def main():
 
 
 main()
-
-
-#    ︵.︵
-#   (˛. *˛)
-#  (˛˛. *。)
-#  (˛* ˛*˛*)
-#     |.|
-
-
-
-#             -------------------------------------PLAZA-----------------------------------
-#                    ____________________________︵.︵_______________________________
-#                   /                           (˛. *˛)                             \
-#                  /  /                        (˛˛. *。)                           \ \
-#                 /  /|                        (˛* ˛*˛*)                           |\ \
-#                /  /                             |.|                                \ \
-#               /  /|                                                                |\ \
-#              /_________________________________________________________________________\
