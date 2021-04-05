@@ -1808,11 +1808,11 @@ def cuarto_1(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
             print('(Si desea cambiar de cuarto presione 4)')
             print('\n')
             time.sleep(1)
-            decision = int(input('Escoge uno: '))
-            while decision != 1 and decision != 2 and decision != 3 and decision != 4:
-                decision = int(input('Escoge uno: '))
+            decision = (input('Escoge uno: '))
+            while decision != '1' and decision != '2' and decision != '3' and decision != '4':
+                decision = (input('Escoge uno: '))
 
-            if decision == 1:
+            if decision == '1':
                 # El Ahorcado
                 
                 print('¡Que empiece el juego!')
@@ -1824,7 +1824,7 @@ def cuarto_1(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                 jugar(user, palabras_ahorcado, imagenes)
                 
 
-            elif decision == 2:
+            elif decision == '2':
                 #Preguntas Matematicas
                 # for objeto in user.inventario:
                 if "libro de matemáticas" in user.inventario:
@@ -1838,7 +1838,7 @@ def cuarto_1(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                 else:
                     print('Necesito que sepas derivar')
 
-            elif decision == 3:
+            elif decision == '3':
                 #Criptograma
                 if "llave" in user.inventario:
                     print('¡Que empiece el juego!')
@@ -1857,10 +1857,10 @@ def cuarto_1(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                 print('\n')
                 print('1: Samán\n2: Puertas de laboratorio')
                 print('\n')
-                cuartos = int(input('Escoja una habitación: '))
-                while cuartos != 1 and cuartos != 2:
-                    cuartos = int(input('Escoja una habitación: '))
-                if cuartos == 1:
+                cuartos = (input('Escoja una habitación: '))
+                while cuartos != '1' and cuartos != '2':
+                    cuartos = (input('Escoja una habitación: '))
+                if cuartos == '1':
                     cuarto_2(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
                 else:
                     cuarto_3(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
@@ -1876,10 +1876,10 @@ def cuarto_1(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                 print('\n')
                 print('1: Samán\n2: Puertas de laboratorio')
                 print('\n')
-                cuartos = int(input('Escoja una habitación: '))
-                while cuartos != 1 and cuartos != 2:
-                    cuartos = int(input('Escoja una habitación: '))
-                if cuartos == 1:
+                cuartos = (input('Escoja una habitación: '))
+                while cuartos != '1' and cuartos != '2':
+                    cuartos = (input('Escoja una habitación: '))
+                if cuartos == '1':
                     cuarto_2(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
                 else:
                     cuarto_3(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
@@ -1927,11 +1927,11 @@ def cuarto_2(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
             print('(Si desea cambiar de cuarto presione 4)')
             print('\n')
             time.sleep(1)
-            decision = int(input('Escoge uno: '))
-            while decision != 1 and decision != 2 and decision != 3 and decision != 4:
-                decision = int(input('Escoge uno: '))
+            decision = (input('Escoge uno: '))
+            while decision != '1' and decision != '2' and decision != '3' and decision != '4':
+                decision = (input('Escoge uno: '))
 
-            if decision == 1:
+            if decision == '1':
                 # Encuentra la lógica y resuelve
                 if 'Título Universitario' in user.inventario and 'Mensaje: Si estas gradudado puedes pisar el Samán' in user.inventario:
                     print('¡Que empiece el juego!')
@@ -1949,7 +1949,7 @@ def cuarto_2(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                     print(user.vidas)
 
 
-            elif decision == 2:
+            elif decision == '2':
                 #Quizizz Cultura Unimetana
                 print('¡Que empiece el juego!')
                 print('\n')
@@ -1959,7 +1959,7 @@ def cuarto_2(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                 time.sleep(0.5)
                 jugar_cultuta_unimet(user, preguntas_unimet)
 
-            elif decision == 3:
+            elif decision == '3':
                 #memoria con emojis
                 print('¡Que empiece el juego!')
                 print('\n')
@@ -1977,7 +1977,7 @@ def cuarto_2(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
             continuar = input('¿Desea continuar en la habitación? [S/N]: ').upper()
             if continuar == 'N':
                 cuarto_1(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
-                # break
+                
         
 
         else:
@@ -2040,11 +2040,11 @@ def cuarto_3(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
             print('\n')
             time.sleep(1)
             print('\n')
-            decision = int(input('Toma la puerta: '))
-            while decision != 1 and decision != 2:
-                decision = int(input('Escoge uno: '))
+            decision = (input('Toma la puerta: '))
+            while decision != '1' and decision != '2':
+                decision = (input('Escoge uno: '))
 
-            if decision == 1:
+            if decision == '1':
                 # Lógica Booleana
                 if 'martillo' in user.inventario:
                     print('¡Que empiece el juego!')
@@ -2063,10 +2063,10 @@ def cuarto_3(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                 print('\n')
                 print('1: Biblioteca\n2: Laboratorios')
                 print('\n')
-                cuartos = int(input('Escoja una habitación: '))
-                while cuartos != 1 and cuartos != 2:
-                    cuartos = int(input('Escoja una habitación: '))
-                if cuartos == 1:
+                cuartos = (input('Escoja una habitación: '))
+                while cuartos != '1' and cuartos != '2':
+                    cuartos = (input('Escoja una habitación: '))
+                if cuartos == '1':
                     cuarto_1(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
                 else:
                     cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
@@ -2079,10 +2079,10 @@ def cuarto_3(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                 print('\n')
                 print('1: Biblioteca\n2: Laboratorios')
                 print('\n')
-                cuartos = int(input('Escoja una habitación: '))
-                while cuartos != 1 and cuartos != 2:
-                    cuartos = int(input('Escoja una habitación: '))
-                if cuartos == 1:
+                cuartos = (input('Escoja una habitación: '))
+                while cuartos != '1' and cuartos != '2':
+                    cuartos = (input('Escoja una habitación: '))
+                if cuartos == '1':
                     cuarto_1(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
                 else:
                     cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
@@ -2137,11 +2137,11 @@ def cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
             print('(Si desea cambiar de cuarto presione 4)')
             print('\n')
             time.sleep(1)
-            decision = int(input('Escoge uno: '))
-            while decision != 1 and decision != 2 and decision != 3 and decision != 4:
-                decision = int(input('Escoge uno: '))
+            decision = (input('Escoge uno: '))
+            while decision != '1' and decision != '2' and decision != '3' and decision != '4':
+                decision = (input('Escoge uno: '))
 
-            if decision == 1:
+            if decision == '1':
                 # Sopa de letras
                 print('¡Que empiece el juego!')
                 print('\n')
@@ -2150,7 +2150,7 @@ def cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                 print('\n')
                 time.sleep(0.5)
                 jugar_sopa(user, matriz_1, matriz_2, matriz_3)
-            elif decision == 2:
+            elif decision == '2':
                 # Preguntas sobre python
                 print('¡Que empiece el juego!')
                 print('\n')
@@ -2159,7 +2159,7 @@ def cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                 print('\n')
                 time.sleep(0.5)
                 jugar_python(user, preguntas_python)
-            elif decision == 3:
+            elif decision == '3':
                 # Adivinanzas
                 print('¡Que empiece el juego!')
                 print('\n')
@@ -2175,10 +2175,10 @@ def cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                 print('\n')
                 print('1: Pasillo de los laboratorios\n2: Sala de servidores')
                 print('\n')
-                cuartos = int(input('Escoja una habitación: '))
-                while cuartos != 1 and cuartos != 2:
-                    cuartos = int(input('Escoja una habitación: '))
-                if cuartos == 1:
+                cuartos = (input('Escoja una habitación: '))
+                while cuartos != '1' and cuartos != '2':
+                    cuartos = (input('Escoja una habitación: '))
+                if cuartos == '1':
                     cuarto_3(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
                 else:
                     cuarto_5(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
@@ -2190,10 +2190,10 @@ def cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                 print('\n')
                 print('1: Pasillo de los laboratorios\n2: Sala de servidores')
                 print('\n')
-                cuartos = int(input('Escoja una habitación: '))
-                while cuartos != 1 and cuartos != 2:
-                    cuartos = int(input('Escoja una habitación: '))
-                if cuartos == 1:
+                cuartos = (input('Escoja una habitación: '))
+                while cuartos != '1' and cuartos != '2':
+                    cuartos = (input('Escoja una habitación: '))
+                if cuartos == '1':
                     cuarto_3(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
                 else:
                     cuarto_5(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
@@ -2244,11 +2244,11 @@ def cuarto_5(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
             print('(Si desea cambiar de cuarto presione 4)')
             print('\n')
             time.sleep(1)
-            decision = int(input('Escoge uno: '))
-            while decision != 1 and decision != 2 and decision != 3 and decision != 4:
-                decision = int(input('Escoge uno: '))
+            decision = (input('Escoge uno: '))
+            while decision != '1' and decision != '2' and decision != '3' and decision != '4':
+                decision = (input('Escoge uno: '))
 
-            if decision == 1:
+            if decision == '1':
                 # 21 Blackjack
                 if 'carnet' in user.inventario and 'Disco Duro' in user.inventario:
                     print('¡Que empiece el juego!')
@@ -2260,7 +2260,7 @@ def cuarto_5(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                     jugar_blackjack(user)
                 else:
                     print('Necesitas tener un carnet de trabajador para poder pasar')
-            elif decision == 2:
+            elif decision == '2':
                 # Palabra mezclada
                 if 'Disco Duro' in user.inventario:
                     print('¡Que empiece el juego!')
@@ -2272,7 +2272,7 @@ def cuarto_5(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                 else:
                     print('Te falta la pieza clave')
 
-            elif decision == 3:
+            elif decision == '3':
                 # escoge un número entre
                 print('¡Que empiece el juego!')
                 print('\n')
@@ -2288,16 +2288,7 @@ def cuarto_5(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
             print('\n')
             continuar = input('¿Desea continuar en la habitación? [S/N]: ').upper()
             if continuar == 'N':
-                print('\n')
-                print('¿Desea volver a la habitación anterior (laboratorios)?')
-                print('\n')
-                cuartos = input('Tome una decisión [S/N]: ').upper()
-                while cuartos != 'S' and cuartos != 'N':
-                    cuartos = input('Tome una decisión [S/N]: ').upper()
-                if cuartos == 'N':
-                    sys.exit()
-                else:
-                    cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
+                cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
 
         else:
             print('Se te acabaron las vidas ¡GAME OVER!')
@@ -2719,58 +2710,58 @@ def main():
                 print('¿Qué pasó papá, le tienes miedo al éxito?')
     
         elif decision_cuenta == 2:
-            print()
-            # ver_usuarios()
-            # validar_nombre = input('Ingrese su nombre de usuario: ')
-            # vun = validar_nombre.split()
+            # print()
+            ver_usuarios()
+            validar_nombre = input('Ingrese su nombre de usuario: ')
+            vun = validar_nombre.split()
 
-            # while True:
-            #     if not ("".join(vun)).isalpha():
-            #         validar_nombre = input('Ingrese su nombre de usuario: ')
-            #         vun = validar_nombre.split()
-            #     elif ("".join(vun)).isalpha():
-            #         break
-            # validar_nombre = validar_nombre.title()
+            while True:
+                if not ("".join(vun)).isalpha():
+                    validar_nombre = input('Ingrese su nombre de usuario: ')
+                    vun = validar_nombre.split()
+                elif ("".join(vun)).isalpha():
+                    break
+            validar_nombre = validar_nombre.title()
 
-            # validar_contraseña = input('Ingrese su contraseña: ')
-            # vcon = validar_contraseña.split()
+            validar_contraseña = input('Ingrese su contraseña: ')
+            vcon = validar_contraseña.split()
 
-            # while True:
-            #     if not ("".join(vcon)).isalnum():
-            #         validar_contraseña = input('Ingrese su contraseña: ')
-            #         vvcon = validar_contraseña.split()
-            #     elif ("".join(vcon)).isalnum():
-            #         break
+            while True:
+                if not ("".join(vcon)).isalnum():
+                    validar_contraseña = input('Ingrese su contraseña: ')
+                    vvcon = validar_contraseña.split()
+                elif ("".join(vcon)).isalnum():
+                    break
             
             
-            # with open('DatosUsuarios.txt') as dataus:
-            #     datos = dataus.readlines()
-            #     # print(datos)
-            # for dato in datos:
-            #     # print(dato)
-            #     username_v = dato[:-1].split(" - ")
-            #     # print(username_v)
-            #     if username_v[0] == validar_nombre and username_v[1] == validar_contraseña:
-            #         print('Usuario confirmado con exito')
-            #         break
-            #     else:
-            #         print('Username o contraseña incorrectos')
+            with open('DatosUsuarios.txt') as dataus:
+                datos = dataus.readlines()
+                # print(datos)
+            for dato in datos:
+                # print(dato)
+                username_v = dato[:-1].split(" - ")
+                # print(username_v)
+                if username_v[0] == validar_nombre and username_v[1] == validar_contraseña:
+                    print('Usuario confirmado con exito')
+                    break
+                else:
+                    print('Username o contraseña incorrectos')
                     
 
-            #     for i,j in enumerate(username_v):
-            #         if i == 0:
-            #             if j == validar_nombre:
-            #                print('Nombre de usuario valido') 
-            #             else:
-            #                 print('Nombre de usuario no existe')
-            #                 break
+                for i,j in enumerate(username_v):
+                    if i == 0:
+                        if j == validar_nombre:
+                           print('Nombre de usuario valido') 
+                        else:
+                            print('Nombre de usuario no existe')
+                            break
                     
-            #         if i == 1:
-            #             if j == validar_contraseña:
-            #                 print('Usuario confirmado con exito')
-            #             else:
-            #                 print('Contraseña Incorrecta')
-            #                 break
+                    if i == 1:
+                        if j == validar_contraseña:
+                            print('Usuario confirmado con exito')
+                        else:
+                            print('Contraseña Incorrecta')
+                            break
         
 
         elif decision_cuenta == 3:
