@@ -169,7 +169,7 @@ def TurnoCartas(user):
             sys.exit()
             break
             return total
-        elif total == 21:
+        elif total == 20:
             mesa.append(numero)
             print('FELICIDADES, has ganado la partida')
             time.sleep(4)
@@ -179,10 +179,6 @@ def TurnoCartas(user):
             return total
         else:
             print ("QUE MALA SUERTE! HAS PERDIDO! ")
-            # vida = user.vidas
-            # vida -= 0.25
-            # user.vidas = vida
-            # print(user.vidas)
             return 0
 
     # Se actualizan los datos en el archivo txt de las estadiasticas
@@ -215,11 +211,14 @@ def jugar_blackjack(user):
         while True:
             if intentos < 5:
                 print ('JUEGO DE BLACK JACK')
-                
+                print('\n')                
                 print ('Buenas, Jugadores, Vamos a empezar la Partida de BlackJack')
+                print('\n')
                 time.sleep(2)
                 print ('Inicia el Jugador numero 1')
+                print('\n')
                 time.sleep(1)
+                print('\n')
                 Jugador1 = TurnoCartas(user)
                 print (f'Total del Jugador = {Jugador1}')
                 print('\n')
@@ -281,6 +280,7 @@ def jugar_numero(user):
         while True:
             # Se le pide al usuario que introduzca un número
             print('Escoge un número entre 1 y 15')
+            print('\n')
             numeros = input('Escoge un número: ')
             while not numeros.isnumeric():
                 numeros = input('Escoge un número: ')
@@ -351,6 +351,7 @@ def jugar_mezcladas(user, palabras_cocina, palabras_baile, palabras_baño):
     for palabra in categorias_aleatorias:
         inversa = random.sample(palabra, len(palabra))
         print(inversa)
+        print('\n')
     
     # Se inicializan algunas variables
     intentos = 0
@@ -476,6 +477,7 @@ def jugar_adivinanzas(user, adivinanzas):
     if user.vidas > 0:
         while True:
             print('Si deseas usar una pista presiona "*"')
+            print('\n')
             respuesta = input('Ingrese su respuesta: ').lower()
             # Opción de pedir un pista
             pista = user.pistas
@@ -635,6 +637,7 @@ def jugar_python(user, preguntas_python):
     if user.vidas > 0:
         while True:
             print('Si deseas usar una pista presiona "*"')
+            print('\n')
             respuesta = input('Ingrese su respuesta: ')
             # Opción de pedir un pista
             pista = user.pistas
@@ -674,7 +677,7 @@ def jugar_python(user, preguntas_python):
                         numero = n
                         decimal = numero.replace(',','.')
                         decimal = float(decimal)
-                        print(type(decimal))
+                        
                 respuesta_1 = decimal
                 if respuesta_1 == respuesta:
                     print('La respuesta es correcta')
@@ -757,8 +760,10 @@ def jugar_sopa(user, matriz_1, matriz_2, matriz_3):
             print(matrices_aleatorias)
 
             decision_pista = input('¿Deseas pedir una pista? [S/N]: ').upper()
+            print('\n')
             while decision_pista != 'S' and decision_pista != 'N':
                 decision_pista = input('¿Deseas pedir una pista? [S/N]: ').upper()
+                print('\n')
 
             if decision_pista == 'S':
                 if user.pistas > 0:
@@ -800,6 +805,7 @@ def jugar_sopa(user, matriz_1, matriz_2, matriz_3):
             else:
                 print('\n')
                 print('Hay 3 palabras en la sopa de letras')
+                print('\n')
                 x1 = int(input('Ingrese la coordenada en x de la primera letra: '))
                 y1 = int(input('Ingrese la coordenada en y de la primera letra: '))
                 x2 = int(input('Ingrese la coordenada en x de la última letra: '))
@@ -909,6 +915,7 @@ def pregunta_boobleana(preguntas_booleanas):
 def jugar_booleano(user, preguntas_booleanas):
     pregunta_aleatoria = pregunta_unimet(preguntas_booleanas)
     print(pregunta_aleatoria)
+    print('\n')
     # Validando la cantidad de vidas restantes
     if user.vidas > 0:
         while True:
@@ -996,7 +1003,9 @@ def jugar_memoria(user):
             print(matriz)
             print('\n')
             print('Escoge los emojis que sean iguales')
+            print('\n')
             print('Si deseas usar una pista para conseguir el segundo emoji, debes introducir las coordenasdas del primer emoji y luego presionar "4" en las coordenadas del segundo emoji')
+            print('\n')
             x1 = int(input('Ingrese la coordenada en x del primer emoji: '))
             while x1 < 0 and x1 > 4:
                 x1 = int(input('Ingrese la coordenada en x del primer emoji: '))
@@ -1197,6 +1206,7 @@ def jugar_cultuta_unimet(user, preguntas_unimet):
                 print('25 de octubre')
                 print('25 de septiembre')
                 print('Si deseas usar una pista presiona "*"')
+                print('\n')
                 respuesta = input('Ingrese su respuesta: ')
                 respuesta_1 = '22 de octubre'
                 if respuesta == '*':
@@ -1232,6 +1242,7 @@ def jugar_cultuta_unimet(user, preguntas_unimet):
                 print('1970')
                 print('1980')
                 print('Si deseas usar una pista presiona "*"')
+                print('\n')
                 respuesta = input('Ingrese su respuesta: ')
                 respuesta_2 = '1970'
                 if respuesta == '*':
@@ -1266,6 +1277,7 @@ def jugar_cultuta_unimet(user, preguntas_unimet):
                 print('Lorenzo Mendoza')
                 print('Luis Miguel Da Gama')
                 print('Si deseas usar una pista presiona "*"')
+                print('\n')
                 respuesta = input('Ingrese su respuesta: ').title()
                 respuesta_3 = 'Eugenio Mendoza'
                 if respuesta == '*':
@@ -1331,6 +1343,7 @@ def pregunta_logica(preguntas_logica):
 def jugar_logica(user, preguntas_logica):
     pregunta_aleatoria = pregunta_logica(preguntas_logica)
     print(pregunta_aleatoria)
+    print('\n')
     intentos = 0
     # Validando la cantidad de vidas restantes
     if user.vidas > 0:
@@ -1408,6 +1421,7 @@ def jugar_criptograma(user, preguntas_criptograma):
     pregunta_aleatoria = pregunta_criptograma(preguntas_criptograma)
     print('Debes descifrar el siguente criptograma')
     print(pregunta_aleatoria)
+    print('\n')
     intentos = 0
     # Validando la cantidad de vidas restantes
     if user.vidas > 0:
@@ -1500,6 +1514,7 @@ def pregunta_matematica(preguntas_matematica):
 def jugar_matematica(user, preguntas_matematica):
     pregunta_aleatoria = pregunta_matematica(preguntas_matematica)
     print(pregunta_aleatoria)
+    print('\n')
     intentos = 0
 
     contador_pistas = 0
@@ -1507,6 +1522,7 @@ def jugar_matematica(user, preguntas_matematica):
     if user.vidas > 0:
         while True:
             print('Si deseas usar una pista presiona "*"')
+            print('\n')
             respuesta = input('Ingrese su respuesta: ')
             # Opción de pedir un pista
             pista = user.pistas
@@ -1650,6 +1666,7 @@ def jugar(user, palabras_ahorcado, imagenes):
         while True:
             consola(ocultas, intentos, imagenes)
             print('Si deseas usar una pista presiona "*"')
+            print('\n')
             letra = str(input('Escoge una letra: '))
             while not letra.isalpha() and letra != '*':
                 letra = str(input('Escoge una letra: '))
@@ -1898,16 +1915,16 @@ def cuarto_2(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
             color = fg('#8d2424') + bg('#ffffff')
             res = attr('reset')
             print(color + '''
-            ----------------------------------PLAZA-----------------------------------
-
-            
-                  ____________________________︵.︵_______________________________
-                 /                           (˛. *˛)                             \
-                /  /                        (˛˛. *。)                           \ \
-               /  /|                        (˛* ˛*˛*)                           |\ \
-              /  /                             |.|                                \ \
-             /  /|                                                                |\ \
-            /_________________________________________________________________________\
+            ----------------------------------PLAZA--------------------------------------
+            |                                                                           |
+            |                                                                           |
+            |      ____________________________︵.︵_______________________________     |
+            |     /                           (˛. *˛)                             \     |
+            |    /  /                        (˛˛. *。)                           \ \    |
+            |   /  /|                        (˛* ˛*˛*)                           |\ \   |
+            |  /  /                             |.|                                \ \  |
+            | /  /|                                                                |\ \ |
+            |/_________________________________________________________________________\|
             Estas en la plaza de rectorado de la UNIMET
 
             ''' + res)
@@ -1975,6 +1992,9 @@ def cuarto_2(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
             
             print('\n')
             continuar = input('¿Desea continuar en la habitación? [S/N]: ').upper()
+            while continuar != 'S' and continuar != 'N':
+                continuar = input('¿Desea continuar en la habitación? [S/N]: ').upper()
+
             if continuar == 'N':
                 cuarto_1(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
                 
@@ -2073,6 +2093,9 @@ def cuarto_3(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
 
             print('\n')
             continuar = input('¿Desea continuar en la habitación? [S/N]: ').upper()
+            while continuar != 'S' and continuar != 'N':
+                continuar = input('¿Desea continuar en la habitación? [S/N]: ').upper()
+
             if continuar == 'N':
                 print('\n')
                 print('¿A qué habitación desea ir?')
@@ -2184,6 +2207,9 @@ def cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
                     cuarto_5(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
             print('\n')
             continuar = input('¿Desea continuar en la habitación? [S/N]: ').upper()
+            while continuar != 'S' and continuar != 'N':
+                continuar = input('¿Desea continuar en la habitación? [S/N]: ').upper()
+
             if continuar == 'N':
                 print('\n')
                 print('¿A qué habitación desea ir?')
@@ -2287,6 +2313,8 @@ def cuarto_5(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_
             
             print('\n')
             continuar = input('¿Desea continuar en la habitación? [S/N]: ').upper()
+            while continuar != 'S' and continuar != 'N':
+                continuar = input('¿Desea continuar en la habitación? [S/N]: ').upper()
             if continuar == 'N':
                 cuarto_4(user, palabras_ahorcado, imagenes, preguntas_matematica, preguntas_criptograma, preguntas_unimet, preguntas_logica, preguntas_booleanas, preguntas_python, adivinanzas, matriz_1, matriz_2, matriz_3, palabras_cocina, palabras_baile, palabras_baño)
 
@@ -2676,7 +2704,7 @@ def main():
             Hoy 5 de marzo de 2021, la Universidad sigue en cuarentena (esto no es novedad), 
             lo que sí es novedad es que se robaron un Disco Duro de la Universidad del cuarto 
             de redes que tiene toda la información de SAP de estudiantes, pagos y asignaturas. 
-            Necesitamos que nos ayudes a recuperar el disco, para eso tienes {user.tiempo} minutos, 
+            Necesitamos que nos ayudes a recuperar el disco, para eso tienes {user.tiempo} segundos, 
             antes de que el servidor se caiga y no se pueda hacer más nada. 
             ''')
 
@@ -2707,7 +2735,7 @@ def main():
                 print('¡Felicidades! Has logrado evitar una catástrofe en la Unimet')
                 sys.exit()
             else:
-                print('¿Qué pasó papá, le tienes miedo al éxito?')
+                print('¿Qué pasó, le tienes miedo al éxito?')
     
         elif decision_cuenta == 2:
             # print()
